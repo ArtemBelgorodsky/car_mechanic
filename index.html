@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMasterPro - Профессиональный автосервис</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549318583-f9d0c4e7c4d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce 3s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .contact-form input, .contact-form textarea {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Навигация -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-car text-blue-500 text-3xl"></i>
+                    <span class="text-xl font-bold">AutoMaster<span class="text-blue-500">Pro</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-400 transition">Главная</a>
+                    <a href="#services" class="hover:text-blue-400 transition">Услуги</a>
+                    <a href="#about" class="hover:text-blue-400 transition">О нас</a>
+                    <a href="#testimonials" class="hover:text-blue-400 transition">Отзывы</a>
+                    <a href="#contact" class="hover:text-blue-400 transition">Контакты</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Мобильное меню -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 hover:text-blue-400 transition">Главная</a>
+                <a href="#services" class="block py-2 hover:text-blue-400 transition">Услуги</a>
+                <a href="#about" class="block py-2 hover:text-blue-400 transition">О нас</a>
+                <a href="#testimonials" class="block py-2 hover:text-blue-400 transition">Отзывы</a>
+                <a href="#contact" class="block py-2 hover:text-blue-400 transition">Контакты</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Герой-секция -->
+    <section id="home" class="hero min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Профессиональный <span class="text-blue-400">автосервис</span></h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">Мы заботимся о вашем автомобиле как о своем собственном. Качество, надежность и гарантия на все работы.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    Записаться онлайн
+                </a>
+                <a href="tel:+1234567890" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-phone mr-2"></i> Позвонить нам
+                </a>
+            </div>
+            
+            <div class="mt-20 animate-bounce-slow">
+                <a href="#services" class="text-white text-4xl">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Услуги -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Наши <span class="text-blue-500">услуги</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Мы предлагаем полный спектр услуг по ремонту и обслуживанию автомобилей всех марок.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Карточка услуги 1 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Техническое обслуживание</h3>
+                    <p class="text-gray-600 mb-6">Регулярное ТО для поддержания вашего автомобиля в идеальном состоянии.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Замена масла и фильтров
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Диагностика всех систем
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Проверка тормозной системы
+                        </li>
+                    </ul>
+                    <button class="text-blue-500 font-semibold hover:text-blue-700 transition">Подробнее →</button>
+                </div>
+                
+                <!-- Карточка услуги 2 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Кузовной ремонт</h3>
+                    <p class="text-gray-600 mb-6">Профессиональный ремонт кузова после ДТП с гарантией качества.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Покраска любой сложности
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Рихтовка без покраски
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Замена элементов кузова
+                        </li>
+                    </ul>
+                    <button class="text-blue-500 font-semibold hover:text-blue-700 transition">Подробнее →</button>
+                </div>
+                
+                <!-- Карточка услуги 3 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Электрика и электроника</h3>
+                    <p class="text-gray-600 mb-6">Диагностика и ремонт всех электрических систем автомобиля.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Ремонт генераторов и стартеров
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Установка дополнительного оборудования
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Диагностика CAN-шины
+                        </li>
+                    </ul>
+                    <button class="text-blue-500 font-semibold hover:text-blue-700 transition">Подробнее →</button>
+                </div>
+                
+                <!-- Карточка услуги 4 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-tire"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Шиномонтаж</h3>
+                    <p class="text-gray-600 mb-6">Полный спектр услуг по обслуживанию колес вашего автомобиля.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Сезонная замена шин
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Балансировка колес
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Ремонт проколов
+                        </li>
+                    </ul>
+                    <button class="text-blue-500 font-semibold hover:text-blue-700 transition">Подробнее →</button>
+                </div>
+                
+                <!-- Карточка услуги 5 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Замена жидкостей</h3>
+                    <p class="text-gray-600 mb-6">Профессиональная замена всех технических жидкостей в автомобиле.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Моторное масло
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Тормозная жидкость
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Охлаждающая жидкость
+                        </li>
+                    </ul>
+                    <button class="text-blue-500 font-semibold hover:text-blue-700 transition">Подробнее →</button>
+                </div>
+                
+                <!-- Карточка услуги 6 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-car-battery"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Диагностика</h3>
+                    <p class="text-gray-600 mb-6">Компьютерная диагностика всех систем автомобиля с помощью профессионального оборудования.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Двигатель и трансмиссия
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Электронные системы
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Подвеска и рулевое управление
+                        </li>
+                    </ul>
+                    <button class="text-blue-500 font-semibold hover:text-blue-700 transition">Подробнее →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- О нас -->
+    <section id="about" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Почему выбирают <span class="text-blue-400">нас</span>?</h2>
+                    <p class="text-gray-300 mb-6">AutoMasterPro - это современный автосервис с 15-летним опытом работы. Наши специалисты проходят регулярное обучение и используют только оригинальные запчасти и профессиональное оборудование.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-500 p-3 rounded-full mr-4">
+                                <i class="fas fa-medal text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Гарантия качества</h3>
+                                <p class="text-gray-300">Мы предоставляем гарантию на все виды работ и используемые запчасти.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-500 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Экономия времени</h3>
+                                <p class="text-gray-300">Большинство работ выполняем в день обращения благодаря современному оборудованию.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-500 p-3 rounded-full mr-4">
+                                <i class="fas fa-dollar-sign text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Прозрачные цены</h3>
+                                <p class="text-gray-300">Фиксированные цены без скрытых платежей. Вы платите только за выполненные работы.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 relative">
+                    <div class="bg-blue-500 rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Наша мастерская" class="w-full h-auto object-cover">
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-white text-gray-900 p-6 rounded-xl shadow-lg hidden lg:block">
+                        <div class="flex items-center">
+                            <div class="text-4xl font-bold text-blue-500 mr-4">15+</div>
+                            <div class="text-sm">Лет успешной<br>работы</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Наши преимущества -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Наши <span class="text-blue-500">преимущества</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Мы делаем все, чтобы ваш автомобиль служил вам долго и надежно.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Гарантия 1 год</h3>
+                    <p class="text-gray-600">На все виды работ и запчасти мы предоставляем гарантию 12 месяцев.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Оригинальные запчасти</h3>
+                    <p class="text-gray-600">Используем только оригинальные или проверенные аналоги от ведущих производителей.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Опытные мастера</h3>
+                    <p class="text-gray-600">Наши специалисты имеют сертификаты и регулярно проходят обучение.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Современное оборудование</h3>
+                    <p class="text-gray-600">Используем профессиональное диагностическое и ремонтное оборудование.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-car text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Все марки автомобилей</h3>
+                    <p class="text-gray-600">Обслуживаем автомобили всех марок и годов выпуска.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-check text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Удобная запись</h3>
+                    <p class="text-gray-600">Запишитесь онлайн или по телефону в удобное для вас время.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Отзывы -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Отзывы <span class="text-blue-500">клиентов</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Что говорят о нас наши клиенты</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Отзыв 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Иван Петров" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Иван Петров</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Отличный сервис! Привез машину с проблемой в двигателе, диагностировали быстро, объяснили все понятно. Ремонт выполнили в срок, цена соответствовала озвученной изначально. Рекомендую!"</p>
+                </div>
+                
+                <!-- Отзыв 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Елена Смирнова" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Елена Смирнова</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Делала покраску бампера после ДТП. Цвет подобрали идеально, не отличить от заводского. Работу выполнили на день раньше обещанного срока. Очень довольна результатом, буду обращаться еще."</p>
+                </div>
+                
+                <!-- Отзыв 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Алексей Иванов" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Алексей Иванов</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Регулярно прохожу ТО в этом сервисе. Всегда вежливый персонал, чистая зона ожидания с кофе. Машину после обслуживания моют. Цены немного выше средних, но качество того стоит."</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    Оставить отзыв
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Наши <span class="text-blue-500">контакты</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Свяжитесь с нами удобным для вас способом</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold mb-6">Записаться на обслуживание</h3>
+                        
+                        <form class="contact-form space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Ваше имя</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Иван Иванов" required>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-gray-700 mb-2">Телефон</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="+7 (999) 123-45-67" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="example@mail.com">
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-gray-700 mb-2">Услуга</label>
+                                <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                    <option value="">Выберите услугу</option>
+                                    <option value="to">Техническое обслуживание</option>
+                                    <option value="body">Кузовной ремонт</option>
+                                    <option value="electrics">Электрика</option>
+                                    <option value="tires">Шиномонтаж</option>
+                                    <option value="diagnostics">Диагностика</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Сообщение</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Опишите проблему или укажите желаемую дату визита"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                Отправить заявку
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-bold mb-6">Как нас найти</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Адрес</h4>
+                                    <p class="text-gray-600">г. Москва, ул. Автозаводская, д. 23, стр. 1</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Телефоны</h4>
+                                    <p class="text-gray-600 mb-1">+7 (495) 123-45-67</p>
+                                    <p class="text-gray-600">+7 (999) 765-43-21 (WhatsApp)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Email</h4>
+                                    <p class="text-gray-600">info@automasterpro.ru</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Часы работы</h4>
+                                    <p class="text-gray-600 mb-1">Пн-Пт: 8:00 - 20:00</p>
+                                    <p class="text-gray-600">Сб-Вс: 9:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.373789919745!2d37.618806315930474!3d55.75170598055216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506f52311b!2z0JrRgNCw0YHQvdC-0LTQsNGALCDQnNC-0YHQutCy0LA!5e0!3m2!1sru!2sru!4v1623761234567!5m2!1sru!2sru" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg"></iframe>
+                        </div>
+                        
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="#" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-car text-blue-500 text-2xl"></i>
+                        <span class="text-xl font-bold">AutoMaster<span class="text-blue-500">Pro</span></span>
+                    </div>
+                    <p class="text-gray-400">Профессиональный автосервис с 2008 года. Качество, надежность и гарантия на все работы.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Услуги</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Техническое обслуживание</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Кузовной ремонт</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Диагностика</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Шиномонтаж</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Электрика</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Контакты</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
+                            <span class="text-gray-400">г. Москва, ул. Автозаводская, д. 23</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-2"></i>
+                            <span class="text-gray-400">+7 (495) 123-45-67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-2"></i>
+                            <span class="text-gray-400">info@automasterpro.ru</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Подписаться</h4>
+                    <p class="text-gray-400 mb-4">Подпишитесь на наши новости и акции</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Ваш email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                        <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 AutoMasterPro. Все права защищены.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Кнопка "Наверх" -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // Мобильное меню
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Кнопка "Наверх"
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Закрываем мобильное меню после клика
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Анимация при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.service-card, .testimonial-card');
+            
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        });
+    </script>
+</body>
+</html>
